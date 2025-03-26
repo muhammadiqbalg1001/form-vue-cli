@@ -1,6 +1,10 @@
 <template>
   <app-header></app-header>
-  <div class="container"></div>
+    <div class="container">
+      <div class="py-3">
+        <comp-contact></comp-contact>
+      </div>
+    </div>
   <app-footer></app-footer>
 </template>
 
@@ -13,3 +17,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+</style>

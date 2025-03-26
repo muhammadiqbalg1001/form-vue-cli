@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import Header from './components/header_footer/Header.vue';
 import Footer from './components/header_footer/Footer.vue';
