@@ -2,7 +2,7 @@
     <form>
         <div class="row">
             <div class="col-xl-12">
-                <h3>Contact Person</h3>
+                <h4>Contact Person</h4>
 
                 <div class="form-group">
                     <label for="name">Nama</label>
@@ -44,6 +44,76 @@
                     ></textarea>
                 </div>
 
+                <div class="form-group">
+                    <p>Want to get promotion ?</p>
+                    <div class="form-check">
+                        <input 
+                            type="checkbox" 
+                            class="form-check-input"
+                            value="Newsletter"
+                            id="newsletter"
+                            v-model="formData.extras"
+                        >
+                        <label 
+                            for="newsletter" 
+                            class="form-check-label"
+                        >
+                            Newsletter
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input 
+                            type="checkbox" 
+                            class="form-check-input"
+                            value="Promotions"
+                            id="promotions"
+                            v-model="formData.extras"
+                        >
+                        <label 
+                            for="promotions" 
+                            class="form-check-label"
+                        >
+                            Promotions
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p>What are you ?</p>
+                    <div class="form-check">
+                        <input 
+                            type="radio" 
+                            class="form-check-input"
+                            value="Male"
+                            id="male"
+                            v-model="formData.gender"
+                        >
+                        <label 
+                            for="male" 
+                            class="form-check-label"
+                        >
+                            Male
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input 
+                            type="radio" 
+                            class="form-check-input"
+                            value="Female"
+                            id="female"
+                            v-model="formData.gender"
+                        >
+                        <label 
+                            for="female" 
+                            class="form-check-label"
+                        >
+                            Female
+                        </label>
+                    </div>
+                </div>
+
                 <button
                     class="btn btn-primary"
                     @click.prevent="submitForm"
@@ -63,7 +133,9 @@
                     name: '',
                     email: '',
                     subject: '',
-                    message: ''
+                    message: '',
+                    extras: [],
+                    gender: '',
                 }
             }
         },
