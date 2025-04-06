@@ -1,8 +1,16 @@
 <template>
-    <form>
+    <form @submit="checkForm($event)">
         <div class="row">
             <div class="col-xl-12">
                 <h4>Contact Person</h4>
+
+                <div class="alert alert-danger" v-if="this.errors.length">
+                    <ul v-for="error in errors" :key="error">
+                        <li>
+                            {{ error }}
+                        </li>
+                    </ul>
+                </div>
 
                 <div class="form-group">
                     <label for="name">Nama</label>
@@ -17,7 +25,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input 
-                        type="email" 
+                        type="text" 
                         id="email" 
                         class="form-control"
                         v-model="formData.email"
@@ -125,7 +133,6 @@
 
                 <button
                     class="btn btn-primary"
-                    @click.prevent="submitForm"
                 >
                     Submit
                 </button>
@@ -138,6 +145,7 @@
     export default {
         data() {
             return {
+                errors: [],
                 formData: {
                     name: '',
                     email: '',
@@ -155,9 +163,31 @@
             }
         },
         methods: {
+            checkForm(e) {
+                e.preventDefault();
+                this.errors = [];
+
+                if(!this.formData.name) {
+                    this.errors.push('Name required...!!');
+                }
+
+                if(!this.formData.email) {
+                    this.errors.push('Email required...!!');
+                } else if(!this.validEmail(this.formData.email)) {
+                    this.errors.push('Valid email required...!!');
+                }
+
+                if(!this.errors.length) {
+                    this.submitForm();
+                }
+            },
             submitForm() {
                 console.log(this.formData);
             },
+            validEmail(email) {
+                const re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+                return re.test(email)
+            }
         }
     }
 </script>
